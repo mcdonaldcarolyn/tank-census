@@ -1,4 +1,9 @@
 <h1>Welcome to Cold Marine</h1>
 <h2>Please log in to view tanks</h2>
 
-<p> Please <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> to continue.
+<% if @is_logged_in %>
+  <div>Put links to tanks here</div>
+<% else %>
+  <p> Please log in or sihn  <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> to continue.
+<% end %>
+

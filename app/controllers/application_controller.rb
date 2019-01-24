@@ -9,6 +9,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
+    @is_logged_in = helpers.logged_in?
     erb :index
   end
 
