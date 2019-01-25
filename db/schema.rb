@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 3) do
 
   create_table "ar_internal_metadata", primary_key: "key", force: true do |t|
     t.string   "value",      limit: nil
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 2) do
   end
 
   add_index "ar_internal_metadata", ["key"], name: "sqlite_autoindex_ar_internal_metadata_1", unique: true
+
+  create_table "tanks", force: true do |t|
+    t.string "name"
+  end
 
   create_table "users", force: true do |t|
     t.string "username"

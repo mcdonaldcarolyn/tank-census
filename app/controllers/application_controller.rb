@@ -36,7 +36,9 @@ class ApplicationController < Sinatra::Base
     erb :tanks
   end
 
-
+  get '/addtanks' do 
+    erb :addtanks
+  end
   get "/login" do
     erb :login
   end
@@ -58,16 +60,6 @@ class ApplicationController < Sinatra::Base
   get "/logout" do
     session.clear
     redirect "/"
-  end
-
-  helpers do
-    def logged_in?
-      !!session[:user_id]
-    end
-
-    def current_user
-      User.find(session[:user_id])
-    end
   end
 
 end
