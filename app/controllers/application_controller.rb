@@ -39,6 +39,12 @@ class ApplicationController < Sinatra::Base
   get '/addtank' do 
     erb :addtank
   end
+  
+  post '/addtank' do 
+    @tank = Tank.new(:name => name)
+    redirect to "/tanks"
+  end
+  
   get "/login" do
     erb :login
   end
