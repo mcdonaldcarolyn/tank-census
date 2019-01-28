@@ -36,8 +36,8 @@ class ApplicationController < Sinatra::Base
     erb :tanks
   end
 
-  get '/addtanks' do 
-    erb :addtanks
+  get '/addtank' do 
+    erb :addtank
   end
   get "/login" do
     erb :login
