@@ -39,12 +39,16 @@ class ApplicationController < Sinatra::Base
 
   get '/tanks/addtank' do 
    @tanks = Tank.all
-    erb :"tanks/addtank"
+   puts @tanks
+   puts "$$$$$$" 
+   erb :"tanks/addtank"
   end
   
   post '/tanks/addtank' do 
-   Tank.create(:name => params[:name])
-   redirect to "/tanks/tanks"
+   @tanks = Tank.all
+    Tank.create(:name => params[:name])
+   puts @tanks
+    redirect to "/tanks/tanks"
   end
   
   get "/users/login" do
