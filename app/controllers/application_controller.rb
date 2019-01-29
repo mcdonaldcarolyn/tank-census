@@ -25,35 +25,37 @@ class ApplicationController < Sinatra::Base
       redirect "/failure"
     else 
       puts "go to login"
-      user = User.new(:username => username, :password => password)
+      user = User.create(:username => username, :password => password)
       user.save
       redirect "/users/login"
     end
   end
 
-  get '/tanks' do
+  get '/tanks/tanks' do
+    @tanks = Tank.all
     @user = User.find(session[:user_id])
     erb :"tanks/tanks"
   end
 
-  get '/addtank' do 
+  get '/tanks/addtank' do 
+   @tanks = Tank.all
     erb :"tanks/addtank"
   end
   
-  post '/addtank' do 
-    @tank = Tank.new(:name => name)
-    redirect to "/tanks"
+  post '/tanks/addtank' do 
+   Tank.create(:name => params[:name])
+   redirect to "/tanks/tanks"
   end
   
   get "/users/login" do
     erb :"users/login"
   end
 
-  post "/login" do
+  post "/users/login" do
     user = User.find_by(:username => params[:username])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect "/tanks"
+        redirect "/tanks/tanks"
       else
         redirect "/failure"
       end
