@@ -31,43 +31,12 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/tanks/tanks' do
-    @tanks = Tank.all
-    @user = User.find(session[:user_id])
-    erb :"tanks/tanks"
-  end
+  
 
-  get '/tanks/addtank' do 
-   @tanks = Tank.all
-   puts @tanks
-   puts "$$$$$$" 
-   erb :"tanks/addtank"
-  end
   
-  post '/tanks/addtank' do 
-   @tanks = Tank.all
-    Tank.create(:name => params[:name])
-   puts @tanks
-    redirect to "/tanks/tanks"
-  end
   
-  get '/tanks/:id' do
-    @tank = Tank.find(params[:id])
-    erb :tank
-  end
-  
-  get '/tanks/:id/edit' do
-    @tanks = Tank.find(params[:id])
-    erb :'/tanks/edittank'
-  end
-  post '/tanks/:id/edit' do 
-    erb :"/tanks/tank"
-  end
-  patch '/tanks/:id' do
-   erb :"/tanks/tanks"
-  end
-
-  get "/users/login" do
+    
+ get "/users/login" do
     erb :"users/login"
   end
 

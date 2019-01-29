@@ -7,7 +7,7 @@
   <li>24: Lobster</li>
   <% @tanks.each do |tank| %>
   <li><%= tank.name%>
-  <a href= "/tanks/edittank">edit</a></li>
+ ( <a href= "/tanks/<%= tank.id%>/edittank">edit</a>)</li>
   <% end%>
 
 </ul>
