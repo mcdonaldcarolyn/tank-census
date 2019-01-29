@@ -51,6 +51,22 @@ class ApplicationController < Sinatra::Base
     redirect to "/tanks/tanks"
   end
   
+  get '/tanks/:id' do
+    @tank = Tank.find(params[:id])
+    erb :tank
+  end
+  
+  get '/tanks/:id/edit' do
+    @tanks = Tank.find(params[:id])
+    erb :'/tanks/edittank'
+  end
+  post '/tanks/:id/edit' do 
+    erb :"/tanks/tank"
+  end
+  patch '/tanks/:id' do
+   erb :"/tanks/tanks"
+  end
+
   get "/users/login" do
     erb :"users/login"
   end

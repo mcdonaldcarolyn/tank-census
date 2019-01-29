@@ -6,12 +6,13 @@
   <li>23: Sandy Botton</li>
   <li>24: Lobster</li>
   <% @tanks.each do |tank| %>
-  <li><%= tank.name%></li>
+  <li><%= tank.name%>
+  <a href= "/tanks/edittank">edit</a></li>
   <% end%>
 
 </ul>
 
 <a href="/tanks/addtank">Add New Tank</a>
-<a href="/tanks/edittank">Edit</a>
+
 <p><a href="/logout">Log Out</a></p>
 </form>
