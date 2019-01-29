@@ -27,17 +27,17 @@ class ApplicationController < Sinatra::Base
       puts "go to login"
       user = User.new(:username => username, :password => password)
       user.save
-      redirect "/login"
+      redirect "/users/login"
     end
   end
 
   get '/tanks' do
     @user = User.find(session[:user_id])
-    erb :tanks
+    erb :"tanks/tanks"
   end
 
   get '/addtank' do 
-    erb :addtank
+    erb :"tanks/addtank"
   end
   
   post '/addtank' do 
@@ -45,8 +45,8 @@ class ApplicationController < Sinatra::Base
     redirect to "/tanks"
   end
   
-  get "/login" do
-    erb :login
+  get "/users/login" do
+    erb :"users/login"
   end
 
   post "/login" do
