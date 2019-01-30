@@ -2,6 +2,7 @@ require './config/environment'
 #require './app/controllers/application_controller'
 
 
-#use Rack::MethodOveride
+use Rack::MethodOverride
 run ApplicationController
 use TanksController
+use UsersController

@@ -37,6 +37,10 @@ class TanksController < ApplicationController
     redirect to "/tanks/tanks"
   end
 
+  delete '/tanks/:id' do
+    @tank = Tank.delete(params[:id])
+    redirect '/tanks/tanks'
+  end
 
   
   
