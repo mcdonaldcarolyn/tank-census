@@ -1,5 +1,7 @@
 require 'bundler'
 Bundler.require
+require 'rock-flash'
+use Rack::Flash
 
 configure :development do
 	set :database, {adapter: "sqlite3", database: "db/database.sqlite3"}

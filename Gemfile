@@ -13,6 +13,7 @@ gem 'rack-test'
 gem 'shotgun'
 gem 'pry'
 gem 'tux'
+gem 'rack-flash'
 
 group :development do
   gem 'sqlite3'
