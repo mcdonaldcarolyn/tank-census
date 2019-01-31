@@ -10,20 +10,14 @@ class TanksController < ApplicationController
   end
 
   get '/tanks/addtank' do 
-   @tanks = Tank.all
-   puts @tanks
-   puts "$$$$$$" 
    erb :"tanks/addtank"
   end
   
   post '/tanks/addtank' do 
-   @tanks = Tank.all
-    @tanks = Tank.create(:name => params[:name])
-   if @tanks.name.length == 0
-     @errormsg = "please input valid tank name"
+    @tank = Tank.create(:name => params[:name])
+   if @tank.valid?
+    @errormsg = @tank.errors.messages
     erb :'tanks/addtank'
-   elsif @tank.name == Tank.name 
-    @errormsg = "That name already exists, please enter a new name"
    else
     redirect to "/tanks/tanks"
    end
