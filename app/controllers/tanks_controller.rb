@@ -14,7 +14,7 @@ class TanksController < ApplicationController
   end
   
   post '/tanks/addtank' do 
-    @tank = Tank.create(:name => params[:name])
+    @tank = Tank.create(:name => params[:name], :user_id => session[:user_id])
       if @tank.valid?
         redirect to "/tanks/tanks"
       else

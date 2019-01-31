@@ -11,23 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
-
-  create_table "ar_internal_metadata", primary_key: "key", force: true do |t|
-    t.string   "value",      limit: nil
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "ar_internal_metadata", ["key"], name: "sqlite_autoindex_ar_internal_metadata_1", unique: true
+ActiveRecord::Schema.define(version: 4) do
 
   create_table "tanks", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
     t.string "username"
-    t.string "password"
     t.string "password_digest"
   end
 
