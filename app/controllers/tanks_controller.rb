@@ -15,28 +15,31 @@ class TanksController < ApplicationController
   
   post '/tanks/addtank' do 
     @tank = Tank.create(:name => params[:name])
-   if @tank.valid?
-    @errormsg = @tank.errors.messages
-    erb :'tanks/addtank'
-   else
-    redirect to "/tanks/tanks"
-   end
+      if @tank.valid?
+        redirect to "/tanks/tanks"
+      else
+        @errormsg = @tank.errors.messages
+        erb :'tanks/addtank'
+      end
   end
   
   
   
   get '/tanks/:id/edittank' do
-  
     @tank = Tank.find(params[:id])
     erb :'/tanks/edittank'
   end
   
   post '/tanks/:id' do 
-    puts "$$$^"
-   @tank = Tank.find(params[:id])
-   @tank.name = params[:name]
-   @tank.save
-    redirect to "/tanks/tanks"
+    @tank = Tank.find(params[:id])
+    @tank.name = params[:name]
+    @tank.save
+      if @tank.valid?
+        redirect to "/tanks/tanks"
+      else
+        @errormsg = @tank.errors.messages
+        erb :'tanks/edittank'
+      end
   end
 
   delete '/tanks/:id' do
