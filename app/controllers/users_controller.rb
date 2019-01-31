@@ -9,16 +9,16 @@ class UsersController < ApplicationController
     username = params[:username]
     password = params[:password]
     if !username || username.length == 0 || !password || password.length == 0
-      puts "redirect no password"
-      redirect "/failure"
+      @errormsg = "Please enter a username and/or password"
+      redirect "/signup"
     else 
-      puts "go to login"
-      user = User.create(:username => username, :password => password)
-       if user.valid?
-        user.save
-        redirect "/users/login"
+      @user = User.create(:username => params[:username], :password => params[:password])
+       if @user.valid?
+        #@user.save
+        redirect "/user/login"
        else
-        redirect "/failure"
+        @errormsg = @user.errors.messages
+        redirect "/signup"
        end
     end
   end
