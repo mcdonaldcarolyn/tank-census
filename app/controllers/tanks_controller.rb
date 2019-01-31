@@ -3,6 +3,7 @@ class TanksController < ApplicationController
   
   
   get '/tanks/tanks' do
+    
     @tanks = Tank.all
     @user = User.find(session[:user_id])
     erb :"tanks/tanks"
@@ -18,15 +19,16 @@ class TanksController < ApplicationController
   post '/tanks/addtank' do 
    @tanks = Tank.all
     Tank.create(:name => params[:name])
-   if @tanks.name.length == 0
-    flash[:notice] = "Please input valid tank name" 
-    erb :'tanks/addtank'
-   else
+   #if @tanks.name.length == 0
+    # flash[:notice] = "Please input valid tank name" 
+    #erb :'tanks/addtank'
+   #else
     redirect to "/tanks/tanks"
-   end
+  
   end
+  
   post '/tank/save' do
-    flash[:notice] = "Your note has been saved"
+    # flash[:notice] = "Your note has been saved"
     redirect '/welcome'
   end
   
