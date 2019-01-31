@@ -14,8 +14,12 @@ class UsersController < ApplicationController
     else 
       puts "go to login"
       user = User.create(:username => username, :password => password)
-      user.save
-      redirect "/users/login"
+       if user.valid?
+        user.save
+        redirect "/users/login"
+       else
+        redirect "/failure"
+       end
     end
   end
 

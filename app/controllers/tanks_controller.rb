@@ -30,16 +30,15 @@ class TanksController < ApplicationController
     erb :'/tanks/edittank'
   end
   
-  post '/tanks/:id' do 
+  patch '/tanks/:id' do 
     @tank = Tank.find(params[:id])
     @tank.name = params[:name]
-    @tank.save
-      if @tank.valid?
+    if @tank.save
         redirect to "/tanks/tanks"
-      else
+    else
         @errormsg = @tank.errors.messages
         erb :'tanks/edittank'
-      end
+    end
   end
 
   delete '/tanks/:id' do
