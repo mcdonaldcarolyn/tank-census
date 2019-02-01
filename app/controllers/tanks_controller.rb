@@ -27,7 +27,11 @@ class TanksController < ApplicationController
   
   get '/tanks/:id/edittank' do
     @tank = Tank.find(params[:id])
-    erb :'/tanks/edittank'
+      if @tank.user_id != session[:user_id]
+        @errormsg = "This tank does not belong to you, you can not edit it"
+        erb :'tanks/tanks'
+      else
+        erb :'/tanks/edittank'
   end
   
   patch '/tanks/:id' do 
@@ -41,7 +45,7 @@ class TanksController < ApplicationController
     end
   end
 
-  delete '/tanks/:id' do
+  delete '/tanks/:id/delete' do
     @tank = Tank.delete(params[:id])
     redirect '/tanks/tanks'
   end
