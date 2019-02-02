@@ -29,7 +29,7 @@ class TanksController < ApplicationController
       @errormsg = "This tank does not belong to you, you can not edit it"
       erb :'tanks/edit'
     else
-      erb :'tanks/edittank'
+      erb :'tanks/edit'
     end
   end
   
@@ -40,7 +40,7 @@ class TanksController < ApplicationController
         redirect to "/tanks/list"
     else
         @errormsg = @tank.errors.full_messages
-        erb :'tanks/edittank'
+        erb :'tanks/edit'
     end
   end
 
