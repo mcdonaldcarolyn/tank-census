@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         #@user.save
         redirect '/tanks/list'
        else
-        @errormsg = @user.errors.messages
+        @errormsg = @user.errors.full_messages
         erb '/users/signup'
        end
     end
@@ -33,8 +33,8 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect '/tanks/list'
       else
-        @errormsg = @user.error.full_messages
-        redirect '/'
+        @errormsg = "Fill in valid username and password"
+        redirect '/user/login'
       end
     end
 
