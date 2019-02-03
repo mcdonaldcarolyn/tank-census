@@ -33,7 +33,8 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect '/tanks/list'
       else
-        redirect '/welcome'
+        @errormsg = @user.error.full_messages
+        redirect '/'
       end
     end
 
