@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     password = params[:password]
     if !username || username.length == 0 || !password || password.length == 0
       @errormsg = "Please enter a username and/or password"
-      erb '/users/signup'
+      erb :'/users/signup'
     else 
       @user = User.create(:username => params[:username], :password => params[:password])
        if @user.valid?
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         redirect '/tanks/list'
        else
         @errormsg = @user.errors.full_messages
-        erb '/users/signup'
+        erb :'/users/signup'
        end
     end
   end
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         redirect '/tanks/list'
       else
         @errormsg = "Fill in valid username and password"
-        redirect '/user/login'
+        erb :'/users/login'
       end
     end
 
