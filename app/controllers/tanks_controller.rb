@@ -3,27 +3,30 @@ class TanksController < ApplicationController
   
   
   get '/tanks/list' do
-    
-    @tanks = Tank.all
-    @user = User.find(session[:user_id])
-    erb :"/tanks/list"
+    if helper.logged_in? && helper.current_user
+      @tanks = Tank.all
+      @user = User.find(session[:user_id])
+      erb :'/tanks/list'
+    else
+      erb :'/welcome'  
   end
 
-  get '/tanks/addtank' do 
-   erb :"tanks/addtank"
+  get '/tanks/add' do 
+    if helper.logged_in? && helper.current_user
+    erb :'tanks/add'
   end
   
-  post '/tanks/addtank' do 
+  post '/tanks/add' do 
     @tank = Tank.create(:name => params[:name], :user_id => session[:user_id])
       if @tank.valid?
-        redirect to "/tanks/list"
+        redirect to '/tanks/list'
       else
-        @errormsg = @tank.errors.messages
-        erb :'tanks/addtank'
+        @errormsg = @tank.errors.full_messages
+        erb :'tanks/add'
       end
   end
 
-  get '/tanks/:id/edittank' do
+  get '/tanks/:id/edit' do
     @tank = Tank.find(params[:id])
     if @tank.user_id != session[:user_id]
       @errormsg = "This tank does not belong to you, you can not edit it"
@@ -37,7 +40,7 @@ class TanksController < ApplicationController
     @tank = Tank.find(params[:id])
     @tank.name = params[:name]
     if @tank.save
-        redirect to "/tanks/list"
+        redirect to '/tanks/list'
     else
         @errormsg = @tank.errors.full_messages
         erb :'tanks/edit'

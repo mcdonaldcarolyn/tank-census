@@ -1,39 +1,39 @@
 class UsersController < ApplicationController
   
   
-  get "/signup" do
-    erb :signup
+  get '/users/signup' do
+    erb :'users/signup'
   end
 
-  post "/signup" do
+  post '/users/signup' do
     username = params[:username]
     password = params[:password]
     if !username || username.length == 0 || !password || password.length == 0
       @errormsg = "Please enter a username and/or password"
-      redirect "/failure"
+      redirect '/failure'
     else 
       @user = User.create(:username => params[:username], :password => params[:password])
        if @user.valid?
         #@user.save
-        redirect "/users/login"
+        redirect '/users/login'
        else
         @errormsg = @user.errors.messages
-        redirect "/failure"
+        redirect '/failure'
        end
     end
   end
 
-  get "/users/login" do
-    erb :"users/login"
+  get '/users/login' do
+    erb :'users/login'
   end
 
-  post "/users/login" do
+  post '/users/login' do
     user = User.find_by(:username => params[:username])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect "/tanks/list"
+        redirect '/tanks/list'
       else
-        redirect "/welcome"
+        redirect '/welcome'
       end
     end
 
@@ -41,9 +41,9 @@ class UsersController < ApplicationController
     erb :failure
   end
 
-  get "/logout" do
+  get '/logout' do
     session.clear
-    redirect "/"
+    redirect '/'
   end
 
 end
