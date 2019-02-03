@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @user = User.create(:username => params[:username], :password => params[:password])
        if @user.valid?
         #@user.save
-        redirect '/users/login'
+        redirect '/tanks/list'
        else
         @errormsg = @user.errors.messages
         redirect '/failure'
