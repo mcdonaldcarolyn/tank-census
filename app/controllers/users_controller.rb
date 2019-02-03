@@ -38,9 +38,7 @@ class UsersController < ApplicationController
       end
     end
 
-  get "/failure" do
-    erb :failure
-  end
+  
 
   get '/logout' do
     session.clear
