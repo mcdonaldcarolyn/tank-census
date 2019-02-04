@@ -21,14 +21,14 @@ class TanksController < ApplicationController
   end
   
   post '/tanks/add' do 
-   if logged_in? && current_user
-    @tank = Tank.create(:name => params[:name], :user_id => session[:user_id])
-      if @tank.valid?
-        redirect to '/tanks/list'
-      else
-        @errormsg = @tank.errors.full_messages
-        erb :'tanks/add'
-      end
+    if logged_in? && current_user
+      @tank = Tank.create(:name => params[:name], :user_id => session[:user_id])
+        if @tank.valid?
+          redirect to '/tanks/list'
+        else
+          @errormsg = @tank.errors.full_messages
+          erb :'tanks/add'
+        end
     else   
       erb :'/welcome'
     end

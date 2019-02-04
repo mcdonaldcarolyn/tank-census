@@ -8,19 +8,20 @@ This app demonstrates secure user interactions, use of ActiveRecord, use of Acti
 2. Allow each Aquarist to create a list of their tanks
 3. Each tank created can only be edited and deleted by the Aquarist who is on charge of that tank
 
-Installation 
+### Installation 
+ 1. clone https://github.com/mcdonaldcarolyn/tank-census
+ 2. "bundle install" in your terminal 
+ 3. "shotgun" in your terminal with run it locally
+ 4. Create tanks that are in your gallery to best track them. 
 
-
-Usage 
-
-Contributing
+## Contributing
 1.Fork it!
 2.Create your feature branch: git checkout -b my-new-feature
 3.Commit your changes: git commit -am 'Add some feature'
 4.Push to the branch: git push origin my-new-feature
 5.Submit a pull request 
 
-License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2019 Carolyn Whelpley
