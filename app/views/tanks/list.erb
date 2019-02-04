@@ -1,0 +1,17 @@
+<h1>Welcome</h1>
+<form>
+<h2>Please pick from the list</h2>
+<ul>
+  <% @tanks.each do |tank| %>
+  <li><%= tank.name%>
+ <% if tank.user == @user %>
+ ( <a href= "/tanks/<%= tank.id%>/edit">edit</a>)</li>
+     
+   <%end%>
+  <% end %>
+</ul>
+<div><%=@errormsg%>
+<a href="/tanks/add">Add New Tank</a>
+
+<p><a href="/logout">Log Out</a></p>
+</form>

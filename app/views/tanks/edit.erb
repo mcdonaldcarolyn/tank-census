@@ -1,0 +1,29 @@
+<h1> Edit the Tank</h1>
+
+<% if @errormsg  %>
+  <div><%= @errormsg %></div>
+  <a href="/tanks/list">Go back to tanks</a>
+<% else %>
+  <form action="/tanks/<%= @tank.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+    <label>Name:</label>
+  <input type="text" name="name" id="name" value="<%= @tank.name%>">
+  <button type="submit">submit</button>
+    <div><%= @errormsg %></div>
+    </form>
+    <br>
+    
+
+    <br>
+
+    <br>
+    
+    <form action="/tanks/<%= @tank.id%>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+
+    <button type="submit" value="delete">Delete</button>
+    
+  </form>
+<% end %>
+
