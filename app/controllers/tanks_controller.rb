@@ -6,7 +6,7 @@ class TanksController < ApplicationController
     if logged_in? && current_user
       @tanks = Tank.all
       @user = User.find(session[:user_id])
-      erb :'/tanks/list'
+      redirect to '/tanks/list'
     else
       erb :'/welcome'  
     end
