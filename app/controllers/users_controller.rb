@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       erb :'/users/signup'
     else 
       @user = User.create(:username => params[:username], :password => params[:password])
-      
       session[:user_id] = @user.id 
       if @user.valid?
         #@user.save

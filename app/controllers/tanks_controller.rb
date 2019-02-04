@@ -3,7 +3,7 @@ class TanksController < ApplicationController
   
   
   get '/tanks/list' do
-    if logged_in? && current_user
+    if logged_in? 
       @tanks = Tank.all
       @user = User.find(session[:user_id])
       redirect to '/tanks/list'
