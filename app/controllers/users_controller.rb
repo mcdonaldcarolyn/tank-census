@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     else 
       @user = User.create(:username => params[:username], :password => params[:password])
       session[:username] = @user
-      session[:user_id] = @user.id 
+      session[user_id] = @user.id 
       if @user.valid?
         #@user.save
         redirect '/tanks/list'
