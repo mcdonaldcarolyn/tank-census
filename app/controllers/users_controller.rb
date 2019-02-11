@@ -12,10 +12,9 @@ class UsersController < ApplicationController
       @errormsg = "Please enter a username and/or password"
       erb :'/users/signup'
     else 
-      @user = User.create(:username => params[:username], :password => params[:password])
+      @user = User.new(:username => params[:username], :password => params[:password])
       session[:user_id] = @user.id 
-      if @user.valid?
-        #@user.save
+      if @user.save
         redirect '/tanks/list'
        else
         @errormsg = @user.errors.full_messages
@@ -30,15 +29,20 @@ class UsersController < ApplicationController
 
   post '/users/login' do
     user = User.find_by(:username => params[:username])
-      if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect '/tanks/list'
-      else
-        @errormsg = "Fill in valid username and password"
-        erb :'/users/login'
-      end
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/tanks/list'
+    else
+      @errormsg = "Fill in valid username and password"
+      erb :'/users/login'
     end
+  end
 
+  get "/users/:id" do 
+    @user = User.find_by(:id =>params[:id])
+
+    binding.pry
+  end
   get '/logout' do
     session.clear
     redirect '/'

@@ -9,10 +9,13 @@ This app demonstrates secure user interactions, use of ActiveRecord, RESTful Rou
 3. Each tank created can only be edited and deleted by the Aquarist who is on charge of that tank
 
 ### Installation 
- 1. clone https://github.com/mcdonaldcarolyn/tank-census
- 2. `bundle install` in your terminal 
- 3. `shotgun` in your terminal will run it locally
- 4. Create tanks that are in your gallery to best track them. 
+ ## In your terminal, write the following commands
+ 1. `git clone https://github.com/mcdonaldcarolyn/tank-census`
+ 2. `cd tank-census` 
+ 3. `bundle install` 
+ 4. `rake db:migrate` 
+ 5. `shotgun` to run it locally
+ 6. Follow prompts on the Welcome page and start tracking tanks.
 
 ### Contributing
 1. Fork it!
