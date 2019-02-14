@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       @user = User.new(:username => params[:username], :password => params[:password])
       session[:user_id] = @user.id 
       if @user.save
-        redirect '/tanks/list'
+        erb :'users/show'
        else
         @errormsg = @user.errors.full_messages
         erb :'/users/signup'
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
   
   get '/users/:id' do
     @user = User.find_by(params[:id])
-    erb :'/users/show'
+    erb :'users/show'
   end
   
-  
+
   get '/users/login' do
     erb :'users/login'
   end
