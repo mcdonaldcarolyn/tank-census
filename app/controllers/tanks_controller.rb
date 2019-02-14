@@ -33,8 +33,9 @@ class TanksController < ApplicationController
       redirect '/'
     end
   end
-
-  get '/tanks/:id/edit' do
+  
+  
+    get '/tanks/:id/edit' do
     @tank = Tank.find(params[:id])
     if logged_in? && current_user == @tank.user
       erb :'tanks/edit'
@@ -51,7 +52,7 @@ class TanksController < ApplicationController
         redirect to '/tanks/list'
       else
         @errormsg = @tank.errors.full_messages
-        erb :'tanks/edit'
+        erb :'tanks/list'
       end
     else
       erb :'/welcome'
